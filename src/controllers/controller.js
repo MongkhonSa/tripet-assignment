@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 export const useController = ({ items = [] }) => {
-  const [pageIndex, setPageIndex] = useState(0)
+  const [pageIndex, setPageIndex] = useState(1)
   const onChangePage = useCallback((index) => {
     setPageIndex(index)
   }, [])
