@@ -19,7 +19,6 @@ const FootballCardProps = [
     title: 'CONNECTION',
     description:
       'Connect with coaches directly, you can ping coaches to view profile.',
-    icon: Underline,
   },
   {
     bgColor: 'bg-gray-100',
@@ -27,7 +26,6 @@ const FootballCardProps = [
     title: 'COLLABORATION',
     description:
       'Work with other student athletes to  increase visability. When you share and like other players videos it will increase your visability as a player. This is the team work aspect to Surface 1.',
-    icon: Underline,
   },
   {
     bgColor: 'bg-[#5E3DB3]',
@@ -35,7 +33,7 @@ const FootballCardProps = [
     title: 'GROWTH',
     description:
       'Resources and tools for you to get better as a student Athelte. Access to training classes, tutor sessions, etc ',
-    icon: UnderlineWhite,
+    underlineStyle: 'bg-white',
     textColor: 'text-white',
   },
 ]
@@ -46,7 +44,6 @@ const BasketBallCardProps = [
     title: 'CONNECTION',
     description:
       'Connect with talented athlete directly, you can watch their skills through video show reels directly from Surface 1.',
-    icon: Underline,
   },
   {
     bgColor: 'bg-gray-100',
@@ -54,14 +51,13 @@ const BasketBallCardProps = [
     title: 'COLLABORATION',
     description:
       'Work with recruiter to increase your chances of finding talented athlete.',
-    icon: Underline,
   },
   {
     bgColor: 'bg-[#090C35]',
     no: '03',
     title: 'GROWTH',
     description: 'Save your time, recruit proper athlets for your team. ',
-    icon: UnderlineWhite,
+    underlineStyle: 'bg-white',
     textColor: 'text-white',
     textNoStyle: 'text-violet-500',
   },
@@ -74,9 +70,12 @@ function App() {
     onSwipedLeft: onSwipedLeftFootballer,
     onSwipedRight: onSwipedRightFootballer,
   } = useController({ items: FootballCardProps })
-  const { pageIndex: basketBallPageIndex, onChangePage: onChangeBasketBaller ,onSwipedLeft: onSwipedLeftBasketBaller,
-    onSwipedRight: onSwipedRightBasketBaller,} =
-    useController({ items: BasketBallCardProps })
+  const {
+    pageIndex: basketBallPageIndex,
+    onChangePage: onChangeBasketBaller,
+    onSwipedLeft: onSwipedLeftBasketBaller,
+    onSwipedRight: onSwipedRightBasketBaller,
+  } = useController({ items: BasketBallCardProps })
 
   return (
     <div>
@@ -102,7 +101,7 @@ function App() {
           <div className="tablet:hidden flex justify-center mt-15[px]">
             <img src={FootballerMobile} />
           </div>
-          <div className='hidden tablet:block'>
+          <div className="hidden tablet:block">
             {FootballCardProps.map((card) => {
               return <Card {...card} />
             })}
@@ -129,7 +128,7 @@ function App() {
           <div className="tablet:hidden flex justify-center mt-15[px]">
             <img src={BasketBallMobile} />
           </div>
-          <div className='hidden tablet:block'>
+          <div className="hidden tablet:block">
             {BasketBallCardProps.map((card, index) => {
               return (
                 <Card
@@ -145,7 +144,7 @@ function App() {
             onChange={onChangeBasketBaller}
             itemIndex={basketBallPageIndex}
             onSwipedLeft={onSwipedLeftBasketBaller}
-            onSwipedRight={onSwipedRightFootballer}
+            onSwipedRight={onSwipedRightBasketBaller}
           />
         </div>
       </div>

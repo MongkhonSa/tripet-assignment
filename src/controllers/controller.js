@@ -8,14 +8,14 @@ export const useController = ({ items = [] }) => {
   const onSwipedLeft = useCallback(() => {
     setPageIndex((prev) => {
       if (prev == 0) {
-        return items.length - 1
+        return prev
       } else return prev - 1
     })
   }, [items])
   const onSwipedRight = useCallback(() => {
     setPageIndex((prev) => {
       if (prev == items.length - 1) {
-        return 0
+        return prev
       } else {
         return prev + 1
       }

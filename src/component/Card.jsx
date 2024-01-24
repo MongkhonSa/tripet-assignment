@@ -4,7 +4,7 @@ const Card = ({
   textNoStyle = 'text-black ',
   title,
   description,
-  icon,
+  underlineStyle = 'bg-violet-800',
   textColor = '',
   style = 'desktop:pl-[50%] desktop:pr-[195px] w-full tablet:pl-[38vw] tablet:pr-[30px]',
   isActive = false,
@@ -18,13 +18,13 @@ const Card = ({
       <div className="flex gap-2.5 items-center">
         <div className="text-black text-center">
           <div
-            className={`tablet:text-lg text-sm font-normal tracking-wider ${textNoStyle}`}
+            className={`tablet:text-lg text-sm font-normal tracking-wider ${textNoStyle} max-tablet:text-black`}
           >
             {no}
           </div>
-          <div className="tablet:w-[22px] tablet:h-[5px] w-[18px] h-[4px]">
-            <img src={icon} />
-          </div>
+          <div
+            className={`tablet:w-[22px] tablet:h-[5px] w-[18px] h-[4px] max-tablet:bg-violet-800 rounded-sm ${underlineStyle}`}
+          ></div>
         </div>
         <div className="tablet:text-4xl text-[28px] font-normal text-stone-300">
           {title}
