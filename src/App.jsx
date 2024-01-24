@@ -10,8 +10,9 @@ import Underline from './assets/underline.svg'
 import UnderlineWhite from './assets/underline-white.svg'
 import { useController } from './controllers/controller'
 import Card from './component/Card'
+import CardSwiperContainer from './container/card-swipper'
 
-const LeftCardProps = [
+const FootballCardProps = [
   {
     bgColor: '',
     no: '01',
@@ -38,7 +39,7 @@ const LeftCardProps = [
     textColor: 'text-white',
   },
 ]
-const RightCardProps = [
+const BasketBallCardProps = [
   {
     bgColor: '',
     no: '01',
@@ -67,10 +68,15 @@ const RightCardProps = [
 ]
 
 function App() {
-  const { pageIndex: leftPageIndex, onChangePage: onChangeLeftPage } =
-    useController()
-  const { pageIndex: rightPageIndex, onChangePage: onChangeRightPage } =
-    useController()
+  const {
+    pageIndex: footballerPageIndex,
+    onChangePage: onChangeFootballer,
+    onSwipedLeft: onSwipedLeftFootballer,
+    onSwipedRight: onSwipedRightFootballer,
+  } = useController({ items: FootballCardProps })
+  const { pageIndex: basketBallPageIndex, onChangePage: onChangeBasketBaller ,onSwipedLeft: onSwipedLeftBasketBaller,
+    onSwipedRight: onSwipedRightBasketBaller,} =
+    useController({ items: BasketBallCardProps })
 
   return (
     <div>
@@ -96,27 +102,26 @@ function App() {
           <div className="tablet:hidden flex justify-center mt-15[px]">
             <img src={FootballerMobile} />
           </div>
-          {LeftCardProps.map((card, index) => {
-            return <Card {...card} isActive={index === leftPageIndex} />
-          })}
-          <div className="tablet:hidden flex justify-center gap-5 bg-gray-100 pb-[25px]">
-            {LeftCardProps.map((_, index) => {
-              return (
-                <div
-                  onClick={() => onChangeLeftPage(index)}
-                  className={`w-2.5 h-2.5  ${index === leftPageIndex ? 'bg-violet-800' : 'bg-zinc-300'} rounded-full`}
-                />
-              )
+          <div className='hidden tablet:block'>
+            {FootballCardProps.map((card) => {
+              return <Card {...card} />
             })}
           </div>
+          <CardSwiperContainer
+            items={FootballCardProps}
+            onChange={onChangeFootballer}
+            itemIndex={footballerPageIndex}
+            onSwipedLeft={onSwipedLeftFootballer}
+            onSwipedRight={onSwipedRightFootballer}
+          />
         </div>
         <div className="absolute  desktop:pl-[42vw] desktop:pr-[3vw] desktop:w-full desktop:left-0 desktop:ml-0 desktop:mt-[10px] tablet:w-[691px]  tablet:left-[86vw] tablet:-ml-[320px]  tablet:mt-[31px] tablet:block hidden">
           <div className="relative">
             <img src={Basketball} />
           </div>
         </div>
-        <div className="flex desktop:w-1/2 desktop:pr-[50%]  tablet:pr-[38vw] tablet:pl-[30px] pl-5">
-          <div className="text-neutral-200 tablet:text-[90px] text-[50px] font-normal desktop:mt-[100px] tablet:mt-[50px] desktop:pl-[291px] mt-5">
+        <div className="flex desktop:w-1/2 desktop:pr-[50%]  tablet:pr-[38vw] max-tablet:pl-[30px] pl-5">
+          <div className="text-neutral-200 tablet:text-[90px] text-[50px] font-normal desktop:mt-[100px] tablet:mt-[50px] desktop:pl-[15vw] mt-5">
             PLAYERS
           </div>
         </div>
@@ -124,25 +129,24 @@ function App() {
           <div className="tablet:hidden flex justify-center mt-15[px]">
             <img src={BasketBallMobile} />
           </div>
-          {RightCardProps.map((card, index) => {
-            return (
-              <Card
-                style="desktop:pr-[50%] desktop:pl-[321px] w-full tablet:pr-[38vw] tablet:pl-[30px]"
-                {...card}
-                isActive={rightPageIndex === index}
-              />
-            )
-          })}
-          <div className="tablet:hidden flex justify-center gap-5 bg-gray-100 pb-[25px]">
-            {RightCardProps.map((_, index) => {
+          <div className='hidden tablet:block'>
+            {BasketBallCardProps.map((card, index) => {
               return (
-                <div
-                  onClick={() => onChangeRightPage(index)}
-                  className={`w-2.5 h-2.5  ${index === rightPageIndex ? 'bg-violet-800' : 'bg-zinc-300'} rounded-full`}
+                <Card
+                  style="desktop:pr-[50%] desktop:pl-[16vw] w-full tablet:pr-[38vw] tablet:pl-[30px]"
+                  {...card}
+                  isActive={basketBallPageIndex === index}
                 />
               )
             })}
           </div>
+          <CardSwiperContainer
+            items={BasketBallCardProps}
+            onChange={onChangeBasketBaller}
+            itemIndex={basketBallPageIndex}
+            onSwipedLeft={onSwipedLeftBasketBaller}
+            onSwipedRight={onSwipedRightFootballer}
+          />
         </div>
       </div>
     </div>
