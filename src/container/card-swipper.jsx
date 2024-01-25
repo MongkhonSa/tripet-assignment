@@ -20,7 +20,7 @@ const CardSwiperContainer = ({
         return <Card {...card} isActive={index === itemIndex} />
       })}
 
-      <div className="tablet:hidden flex justify-center gap-5 bg-gray-100 pb-[25px]">
+      <div className="tablet:hidden flex justify-center gap-5 bg-gray-100 pb-[25px]" draggable>
         {items.map((_, index) => {
           return (
             <div

@@ -80,19 +80,19 @@ function App() {
   return (
     <div>
       <div className="w-full tablet:absolute tablet:overflow-hidden">
-        <div className="tablet:absolute desktop:pl-[11vw] desktop:pr-[50vw] desktop:w-full desktop:right-0 desktop:mr-0 desktop:mt-[50px] tablet:w-[518px]  tablet:right-[86vw] tablet:-mr-[250px]  tablet:mt-[71px] tablet:block hidden">
+        <div className="tablet:absolute desktop:pl-[min(11vw,175px)] desktop:pr-[min(1067px,50vw)] desktop:w-full desktop:right-0 desktop:mr-0 desktop:mt-[50px] tablet:w-[518px]  tablet:right-[86vw] tablet:-mr-[250px]  tablet:mt-[71px] tablet:block hidden">
           <div className="relative">
-            <img src={PlusLight} className="desktop:hidden pl-[197px]" />
-            <img src={Plus} className="desktop:hidden pl-[220px]" />
+            <img src={PlusLight} className="min-[1310px]:hidden pl-[197px]" />
+            <img src={Plus} className="min-[1310px]:hidden pl-[220px]" />
             <img
               src={Line}
-              className="desktop:hidden absolute -z-10 pl-[197px] pt-[19px]"
+              className="min-[1310px]:hidden absolute -z-10 pl-[197px] pt-[19px]"
             />
             <img src={Footballer} />
           </div>
         </div>
 
-        <div className="flex desktop:w-1/2 desktop:pl-[50%]  tablet:pl-[38vw] pl-5">
+        <div className="flex  desktop:pl-[min(1008px,50%)]  tablet:pl-[38vw] pl-5">
           <div className="text-neutral-200 tablet:text-[90px] text-[50px] font-normal desktop:mt-[100px] tablet:mt-[50px] mt-5">
             ATHLETES
           </div>
@@ -114,25 +114,25 @@ function App() {
             onSwipedRight={onSwipedRightFootballer}
           />
         </div>
-        <div className="absolute  desktop:pl-[42vw] desktop:pr-[3vw] desktop:w-full desktop:left-0 desktop:ml-0 desktop:mt-[10px] tablet:w-[691px]  tablet:left-[86vw] tablet:-ml-[320px]  tablet:mt-[31px] tablet:block hidden">
-          <div className="relative">
+        <div className="tablet:absolute desktop:pl-[min(804px,51%)]  desktop:pr-[min(125px,6vw)] desktop:w-full desktop:left-0  desktop:ml-0 desktop:mt-[10px]  tablet:w-[691px]  tablet:left-[86vw] tablet:-ml-[320px] tablet:mt-[31px] tablet:block hidden">
+          <div className="relative ">
             <img src={Basketball} />
           </div>
         </div>
-        <div className="flex desktop:w-1/2 desktop:pr-[50%]  tablet:pr-[38vw] max-tablet:pl-[30px] pl-5">
-          <div className="text-neutral-200 tablet:text-[90px] text-[50px] font-normal desktop:mt-[100px] tablet:mt-[50px] desktop:pl-[15vw] mt-5">
+        <div className="flex desktop:w-1/2 desktop:pr-[50%]  tablet:pr-[min(38vw,364px)] max-desktop:pl-[30px] max-tablet:pl-5">
+          <div className="text-neutral-200 tablet:text-[90px] text-[50px] font-normal desktop:mt-[100px] tablet:mt-[50px] desktop:pl-[min(322px,16vw)] mt-5 ">
             PLAYERS
           </div>
         </div>
         <div>
-          <div className="tablet:hidden flex justify-center mt-15[px]">
+          <div className="tablet:hidden flex justify-center mt-[15px]">
             <img src={BasketBallMobile} />
           </div>
           <div className="hidden tablet:block">
             {BasketBallCardProps.map((card, index) => {
               return (
                 <Card
-                  style="desktop:pr-[50%] desktop:pl-[16vw] w-full tablet:pr-[38vw] tablet:pl-[30px]"
+                  style="desktop:pr-[50%] desktop:pl-[min(322px,16vw)] w-full tablet:pr-[38vw] tablet:pl-[30px]"
                   {...card}
                   isActive={basketBallPageIndex === index}
                 />

@@ -6,7 +6,7 @@ const Card = ({
   description,
   underlineStyle = 'bg-violet-800',
   textColor = '',
-  style = 'desktop:pl-[50%] desktop:pr-[195px] w-full tablet:pl-[38vw] tablet:pr-[30px]',
+  style = 'desktop:pl-[min(50%,1008px)] desktop:pr-[min(195px,10vw)] w-full tablet:pl-[max(38vw,291px)] tablet:pr-[30px]',
   isActive = false,
 }) => (
   <div
